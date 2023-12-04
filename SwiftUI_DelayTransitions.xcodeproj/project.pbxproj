@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D7E5BD12B1E04A900A739A3 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7E5BD02B1E04A900A739A3 /* ChatView.swift */; };
+		2D7E5BD32B1E052E00A739A3 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7E5BD22B1E052E00A739A3 /* EmojiView.swift */; };
 		2DBE0CD72B1CA384007FCD15 /* SwiftUI_DelayTransitionsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE0CD62B1CA384007FCD15 /* SwiftUI_DelayTransitionsApp.swift */; };
 		2DBE0CD92B1CA384007FCD15 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBE0CD82B1CA384007FCD15 /* ContentView.swift */; };
 		2DBE0CDB2B1CA385007FCD15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBE0CDA2B1CA385007FCD15 /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D7E5BD02B1E04A900A739A3 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		2D7E5BD22B1E052E00A739A3 /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		2DBE0CD32B1CA384007FCD15 /* SwiftUI_DelayTransitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUI_DelayTransitions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBE0CD62B1CA384007FCD15 /* SwiftUI_DelayTransitionsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_DelayTransitionsApp.swift; sourceTree = "<group>"; };
 		2DBE0CD82B1CA384007FCD15 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				2DBE0CE82B1CA416007FCD15 /* Home.swift */,
+				2D7E5BD02B1E04A900A739A3 /* ChatView.swift */,
+				2D7E5BD22B1E052E00A739A3 /* EmojiView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,7 +179,9 @@
 				2DBE0CE72B1CA3C1007FCD15 /* Message.swift in Sources */,
 				2DBE0CD92B1CA384007FCD15 /* ContentView.swift in Sources */,
 				2DBE0CE92B1CA416007FCD15 /* Home.swift in Sources */,
+				2D7E5BD32B1E052E00A739A3 /* EmojiView.swift in Sources */,
 				2DBE0CD72B1CA384007FCD15 /* SwiftUI_DelayTransitionsApp.swift in Sources */,
+				2D7E5BD12B1E04A900A739A3 /* ChatView.swift in Sources */,
 				2DBE0CEC2B1CA84C007FCD15 /* BoundsPreference.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

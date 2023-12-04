@@ -14,6 +14,7 @@ struct Home: View {
         Message(message: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.", isReply: true)
     ]
     
+    @State var showHighlight: Bool = false
     @State var highlightMessage: Message?
     
     var body: some View {
@@ -22,7 +23,7 @@ struct Home: View {
             ScrollView {
                 VStack(spacing: 12) {
                     ForEach(messages) { message in
-                        ChatView(message: message)
+                        ChatView(message: message, showEmojis: false, highlighted: .constant(false))
                             .anchorPreference(key: BoundsPreference.self, value: .bounds, transform: { anchor in
                                 
                                 return [message.id: anchor]
@@ -30,6 +31,7 @@ struct Home: View {
                             .padding(message.isReply ? .leading : .trailing, 60)
                             .onLongPressGesture {
                                 withAnimation(.easeInOut) {
+                                    self.showHighlight = true
                                     self.highlightMessage = message
                                 }
                             }
@@ -40,11 +42,14 @@ struct Home: View {
             .navigationTitle("Transitions")
         }
         .overlay(content: {
-            // highlightMessageがセットされたら、全画面にBlurViewをかける
-            if highlightMessage != nil {
+            // 全画面にBlurViewをかける
+            if showHighlight {
                 Rectangle()
                     .fill(.ultraThinMaterial)
                     .ignoresSafeArea()
+                    .onTapGesture {
+                        removeHighlight()
+                    }
             }
         })
         // PreferenceValueが更新された場合、そのvalueを取得しViewをoverlayさせるためのもの
@@ -58,14 +63,12 @@ struct Home: View {
                     let rect = proxy[preference.value]
                     
                     //同じポジション上にoverlayで同じmessageを表示する
-                    ChatView(message: highlightMessage)
+                    ChatView(message: highlightMessage, showEmojis: true, highlighted: $showHighlight)
                         .frame(width: rect.width, height: rect.height)
                         .offset(x: rect.minX, y: rect.minY)
                         .id(highlightMessage.id)
                         .onTapGesture {
-                            withAnimation(.easeInOut) {
-                                self.highlightMessage = nil
-                            }
+                            removeHighlight()
                         }
                 }
                 // transition処理には targetViewに idを付与させる必要がある
@@ -77,13 +80,11 @@ struct Home: View {
         })
     }
     
-    @ViewBuilder
-    func ChatView(message: Message) -> some View {
-        Text(message.message)
-            .padding(15)
-            .background(message.isReply ? .gray.opacity(0.2) : .blue)
-            .foregroundStyle(message.isReply ? .black : .white)
-            .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+    private func removeHighlight() {
+        withAnimation(.easeInOut) {
+            self.showHighlight = false
+            self.highlightMessage = nil
+        }
     }
 }
 
